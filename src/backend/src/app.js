@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const gpi_get_radio = require("./gpi_get_radio.js");
 
 const app = express();
 app.use(cors());
@@ -17,3 +18,5 @@ app.get("/test", function(req, res) {
     };
     res.send(obj);
 })
+
+app.get("/gpi-get-radio", gpi_get_radio);
