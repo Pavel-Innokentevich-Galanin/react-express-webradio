@@ -4,14 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlay,
     faArrowRight,
+    faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
 import "./App.css";
 import styles from "./App.module.css";
 
 export default function App() {
-    const [RadioData, SetRadioData] = useState({});
-    const [RadioIndex, SetRadioIndex] = useState(-1);
+    const [RadioData, SetRadioData] = useState([]);
+    const [RadioIndex, SetRadioIndex] = useState(0);
     const [RadioName, SetRadioName] = useState("Radio name");
     const [RadioSrcImage, SetSrcImage] = useState("");
     const [RadioDescription, SetRadioDescription] = useState("Description");
@@ -42,27 +43,29 @@ export default function App() {
         });
     }
 
+    function gpi_prev_song() {
+        let index = RadioIndex;
+        index -= 1;
+
+        if (RadioData[index] === undefined) {
+            return;
+        }
+
+        SetRadioIndex(index);
+        SetRadioName(RadioData[index]["station"]["display_name"]);
+        SetRadioDescription(RadioData[index]["station"]["description"]);
+        SetSrcImage(RadioData[index]["station"]["images"]["station"]);
+    }
+
     function gpi_next_song() {
         let index = RadioIndex;
+        index += 1;
+
         if (RadioData[index] === undefined) {
-            index = 0;
-            SetRadioIndex(index);
-            if (RadioData[index] === undefined) {
-                index = -1
-                SetRadioIndex(index);
-                return;
-            }
-        }
-        else {
-            index += 1;
-            SetRadioIndex(index);
+            return;
         }
 
-        console.log(`index: ${index}`);
-        console.log(`RadioIndex: ${RadioIndex}`);
-        console.log("RadioData[index]");
-        console.log(RadioData[index])
-
+        SetRadioIndex(index);
         SetRadioName(RadioData[index]["station"]["display_name"]);
         SetRadioDescription(RadioData[index]["station"]["description"]);
         SetSrcImage(RadioData[index]["station"]["images"]["station"]);
@@ -70,6 +73,9 @@ export default function App() {
 
     return (
         <div className={styles.b_player}>
+            <div className={styles.player__index}>
+                {RadioIndex}
+            </div>
             <div className={styles.player_img}>
                 <img
                     src={RadioSrcImage}
@@ -85,6 +91,12 @@ export default function App() {
                 </div>
             </div>
             <div>
+                <button
+                    className={styles.player__button}
+                    onClick={event => gpi_prev_song()}
+                >
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                </button>
                 <button
                     className={styles.player__button}
                     onClick={event => get_json()}
