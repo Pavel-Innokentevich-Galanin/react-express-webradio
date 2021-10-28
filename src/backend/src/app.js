@@ -12,11 +12,4 @@ app.get("/", function(req, res) {
     res.send("Hello, World!");
 });
 
-app.get("/test", function(req, res) {
-    let obj = {
-        "msg": "Hello, World!"
-    };
-    res.send(obj);
-})
-
 app.get("/gpi-get-radio", gpi_get_radio);
