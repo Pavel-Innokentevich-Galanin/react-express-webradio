@@ -5,11 +5,11 @@ cd src
 make install
 ```
 
-## 1st terminal: start MySQL
+## 1st terminal: website launch
 
 ```bash
 cd src
-make run-mysql
+make run-frontend
 ```
 
 ## 2nd terminal: starting the server API
