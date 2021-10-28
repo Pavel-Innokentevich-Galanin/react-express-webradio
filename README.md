@@ -18,10 +18,3 @@ make run-mysql
 cd src
 make run-backend
 ```
-
-## 3rd terminal: website launch
-
-```bash
-cd src
-make run-frontend
-```
