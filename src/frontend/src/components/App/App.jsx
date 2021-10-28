@@ -11,11 +11,20 @@ import "./App.css";
 import styles from "./App.module.css";
 
 export default function App() {
+    const [ConstructorIsRun, SetConstructorIsRun] = useState(false);
     const [RadioData, SetRadioData] = useState([]);
     const [RadioIndex, SetRadioIndex] = useState(0);
     const [RadioName, SetRadioName] = useState("Radio name");
     const [RadioSrcImage, SetSrcImage] = useState("");
     const [RadioDescription, SetRadioDescription] = useState("Description");
+
+    (function() { // Constructor
+        if (ConstructorIsRun) {
+            return;
+        }
+        SetConstructorIsRun(true);
+        get_json();
+    })();
 
     function get_json() {
         const URL = `${process.env.REACT_APP__API_URL}:${process.env.REACT_APP__API_PORT}/gpi-get-radio`;
@@ -92,12 +101,14 @@ export default function App() {
                 >
                     <FontAwesomeIcon icon={faArrowLeft} />
                 </button>
+                {/*
                 <button
                     className={styles.player__button}
                     onClick={event => get_json()}
                 >
                     <FontAwesomeIcon icon={faPlay} />
                 </button>
+                */}
                 <button
                     className={styles.player__button}
                     onClick={event => gpi_next_song()}
