@@ -9,7 +9,7 @@ app.listen(process.env.NODEJS_LOCALE_PORT);
 console.log(`Open ${process.env.NODEJS_BASEURL}:${process.env.NODEJS_LOCALE_PORT}/`);
 
 app.get("/", function(req, res) {
-    res.send("Hello, World!");
+    res.send(200);
 });
 
 app.get("/gpi-get-radio", gpi_get_radio);
