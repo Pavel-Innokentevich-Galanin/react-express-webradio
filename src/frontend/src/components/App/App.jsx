@@ -78,7 +78,7 @@ export default function App() {
 
         RadioHowler.stop();
         SetRadioIsPlay(false);
-        SetRadioPlayIcon(faPause);
+        SetRadioPlayIcon(faPlay);
         const hwr = new Howl({
             src: [
                 RadioData[index]["station"]["stream_url"]
@@ -104,7 +104,7 @@ export default function App() {
 
         RadioHowler.stop();
         SetRadioIsPlay(false);
-        SetRadioPlayIcon(faPause);
+        SetRadioPlayIcon(faPlay);
         const hwr = new Howl({
             src: [
                 RadioData[index]["station"]["stream_url"]
@@ -118,12 +118,12 @@ export default function App() {
     function gpi_play() {
         if (RadioIsPlay) {
             SetRadioIsPlay(false);
-            SetRadioPlayIcon(faPause);
+            SetRadioPlayIcon(faPlay);
             RadioHowler.pause();
         }
         else {
             SetRadioIsPlay(true);
-            SetRadioPlayIcon(faPlay);
+            SetRadioPlayIcon(faPause);
             RadioHowler.play();
         }
     }
