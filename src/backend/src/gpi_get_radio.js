@@ -13,6 +13,6 @@ module.exports = function (req, res) {
         })
         .catch(function (err) {
             console.error(err);
-            res.send("err");
+            res.send(500);
         })
 };

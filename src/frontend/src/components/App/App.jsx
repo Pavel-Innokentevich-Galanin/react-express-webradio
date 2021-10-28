@@ -21,11 +21,6 @@ export default function App() {
         const URL = `${process.env.REACT_APP__API_URL}:${process.env.REACT_APP__API_PORT}/gpi-get-radio`;
         axios.get(URL)
         .then(function(response) {
-            if (response.data === "err") {
-                alert("API return empty array");
-                return;
-            }
-
             let arr = response.data;
             console.log(arr);
             
