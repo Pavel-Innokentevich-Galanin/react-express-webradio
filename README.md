@@ -1,3 +1,5 @@
+![](docs/demo.png)
+
 ## Installing packages
 
 ```bash
