@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { useState } from 'react';
+import {
+    useEffect,
+    useState,
+} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlay,
@@ -13,138 +16,136 @@ import "./App.css";
 import styles from "./App.module.css";
 
 export default function App() {
-    const [ConstructorIsRun, SetConstructorIsRun] = useState(false);
-    const [RadioData, SetRadioData] = useState([]);
-    const [RadioIndex, SetRadioIndex] = useState(0);
-    const [RadioName, SetRadioName] = useState("Radio name");
-    const [RadioSrcImage, SetSrcImage] = useState("");
-    const [RadioDescription, SetRadioDescription] = useState("Description");
-    const [RadioAudio, SetRadioAudio] = useState("");
-    //Play
-    const [RadioHowler, SetRadioHowler] = useState(new Howl({ src: [RadioAudio], html5: true, }));
-    const [RadioIsPlay, SetRadioIsPlay] = useState(false);
-    const [RadioPlayIcon, SetRadioPlayIcon] = useState(faPlay);
-
-    (function () { // Constructor
-        if (ConstructorIsRun) {
-            return;
+    const [gpi_radioIndex, gpi_setRadioIndex] = useState(0);
+    const [gpi_radioArray, gpi_setRadioArray] = useState([
+        {
+            station: {
+                images: {
+                    station: "",
+                },
+                stream_url: "",
+                name: "Name",
+                description: "Description...",
+            },
         }
-        SetConstructorIsRun(true);
+    ]);
+    //Play
+    const [gpi_radioHowler, gpi_setRadioHowler] = useState();
+    const [gpi_radioIsPlay, gpi_setRadioIsPlay] = useState(false);
+    const [gpi_radioPlayIcon, gpi_setRadioPlayIcon] = useState(faPlay);
+
+    useEffect(() => {
         get_json();
-    })();
+    }, []);
 
-    function get_json() {
-        const URL = `${process.env.REACT_APP__API_URL}:${process.env.REACT_APP__API_PORT}/gpi-get-radio`;
-        axios.get(URL)
-            .then(function (response) {
-                let arr = response.data;
-                console.log(arr);
-
-                if (arr[0]) {
-                    console.log(arr[0]);
-                    SetRadioData(arr);
-                    SetRadioName(arr[0]["station"]["display_name"]);
-                    SetRadioDescription(arr[0]["station"]["description"]);
-                    SetSrcImage(arr[0]["station"]["images"]["station"]);
-                    SetRadioAudio(arr[0]["station"]["stream_url"]);
-                    const hwr = new Howl({
-                        src: [
-                            arr[0]["station"]["stream_url"]
-                        ],
-                        html5: true,
-                    });
-                    SetRadioHowler(hwr);
-                }
-            })
-            .catch(function (err) {
-                console.error(err)
-                alert("Not work API sever");
-            });
+    async function get_json() {
+        const GPI_URL = `${process.env.REACT_APP__API_URL}:${process.env.REACT_APP__API_PORT}/gpi-get-radio`;
+        try {
+            const GPI_RESPONSE = await axios.get(GPI_URL)
+            const GPI_ARR = GPI_RESPONSE.data;
+            console.log(GPI_ARR);
+    
+            if (GPI_ARR[0]) {
+                console.log(GPI_ARR[0]);
+                gpi_setRadioArray(GPI_ARR);
+                const GPI_HWR = new Howl({
+                    src: [
+                        GPI_ARR[0].station.stream_url
+                    ],
+                    html5: true,
+                });
+                gpi_setRadioHowler(GPI_HWR);
+            }
+        }
+        catch (gpi_err) {
+            console.error(gpi_err);
+            alert("Not work API sever");
+        }
     }
 
     function gpi_prev_song() {
-        let index = RadioIndex;
-        index -= 1;
+        let gpi_index = gpi_radioIndex;
+        gpi_index -= 1;
 
-        if (RadioData[index] === undefined) {
+        if (gpi_radioArray[gpi_index] === undefined) {
+            alert("It is the first station");
             return;
         }
 
-        SetRadioIndex(index);
-        SetRadioName(RadioData[index]["station"]["display_name"]);
-        SetRadioDescription(RadioData[index]["station"]["description"]);
-        SetSrcImage(RadioData[index]["station"]["images"]["station"]);
-        SetRadioAudio(RadioData[index]["station"]["stream_url"]);
+        gpi_setRadioIndex(gpi_index);
+        console.log(gpi_radioArray[gpi_index]);
 
-        RadioHowler.stop();
-        SetRadioIsPlay(false);
-        SetRadioPlayIcon(faPlay);
-        const hwr = new Howl({
+        gpi_radioHowler.stop();
+        gpi_setRadioIsPlay(false);
+        gpi_setRadioPlayIcon(faPlay);
+        const GPI_HWR = new Howl({
             src: [
-                RadioData[index]["station"]["stream_url"]
+                gpi_radioArray[gpi_index].station.stream_url,
             ],
             html5: true,
         });
-        SetRadioHowler(hwr);
+        gpi_setRadioHowler(GPI_HWR);
     }
 
     function gpi_next_song() {
-        let index = RadioIndex;
-        index += 1;
+        let gpi_index = gpi_radioIndex;
+        gpi_index += 1;
 
-        if (RadioData[index] === undefined) {
+        if (gpi_radioArray[gpi_index] === undefined) {
+            alert("This is the last station");
             return;
         }
 
-        SetRadioIndex(index);
-        SetRadioName(RadioData[index]["station"]["display_name"]);
-        SetRadioDescription(RadioData[index]["station"]["description"]);
-        SetSrcImage(RadioData[index]["station"]["images"]["station"]);
-        SetRadioAudio(RadioData[index]["station"]["stream_url"]);
+        gpi_setRadioIndex(gpi_index);
+        console.log(gpi_radioArray[gpi_index]);
 
-        RadioHowler.stop();
-        SetRadioIsPlay(false);
-        SetRadioPlayIcon(faPlay);
-        const hwr = new Howl({
+        gpi_radioHowler.stop();
+        gpi_setRadioIsPlay(false);
+        gpi_setRadioPlayIcon(faPlay);
+        const GPI_HWR = new Howl({
             src: [
-                RadioData[index]["station"]["stream_url"]
+                gpi_radioArray[gpi_index].station.stream_url,
             ],
             html5: true,
         });
-        SetRadioHowler(undefined);
-        SetRadioHowler(hwr);
+        gpi_setRadioHowler(GPI_HWR);
     }
 
     function gpi_play() {
-        if (RadioIsPlay) {
-            SetRadioIsPlay(false);
-            SetRadioPlayIcon(faPlay);
-            RadioHowler.pause();
+        if (gpi_radioHowler === undefined) {
+            alert("Audio not loaded");
+            return;
+        }
+
+        if (gpi_radioIsPlay) {
+            gpi_setRadioIsPlay(false);
+            gpi_setRadioPlayIcon(faPlay);
+            gpi_radioHowler.pause();
         }
         else {
-            SetRadioIsPlay(true);
-            SetRadioPlayIcon(faPause);
-            RadioHowler.play();
+            gpi_setRadioIsPlay(true);
+            gpi_setRadioPlayIcon(faPause);
+            gpi_radioHowler.play();
         }
     }
 
     return (
         <div className={styles.b_player}>
             <div className={styles.player__index}>
-                {RadioIndex}
+                {gpi_radioIndex}
             </div>
             <div className={styles.player_img}>
                 <img
-                    src={RadioSrcImage}
+                    src={gpi_radioArray[gpi_radioIndex].station.images.station}
                     alt=""
                 />
             </div>
             <div className={styles.player_info}>
                 <div className={styles.player_name}>
-                    {RadioName}
+                    {gpi_radioArray[gpi_radioIndex].station.name}
                 </div>
                 <div className={styles.player__description}>
-                    {RadioDescription}
+                    {gpi_radioArray[gpi_radioIndex].station.description}
                 </div>
             </div>
             <div>
@@ -158,7 +159,7 @@ export default function App() {
                     className={styles.player__button}
                     onClick={event => gpi_play()}
                 >
-                    <FontAwesomeIcon icon={RadioPlayIcon} />
+                    <FontAwesomeIcon icon={gpi_radioPlayIcon} />
                 </button>
                 <button
                     className={styles.player__button}
