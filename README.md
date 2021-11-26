@@ -2,23 +2,38 @@
 
 ## Installing packages
 
-```bash
-make gpi-install
-```
+- Windows:
+    ```cmd
+    gpi_install.bat
+    ```
+- Linux:
+    ```bash
+    ./gpi_install.sh
+    ```
 
 ## 1st terminal: website launch
 
-```bash
-make gpi-run-frontend
-```
+- Windows:
+    ```cmd
+    gpi_run_frontend.bat
+    ```
+- Linux:
+    ```bash
+    ./gpi_run_frontend.sh
+    ```
 
 ## 2nd terminal: starting the server API
 
-```bash
-make gpi-run-backend
-```
+- Windows:
+    ```cmd
+    gpi_run_backend.bat
+    ```
+- Linux:
+    ```bash
+    ./gpi_run_backend.sh
+    ```
 
 ## Links
 
-- [localhost:3000](http://localhost:3000/) - Frontend React App
-- [localhost:3001](http://localhost:3001/) - Backend Express server
+- http://localhost:3000/ - Frontend React App
+- http://localhost:3001/ - Backend Express server
