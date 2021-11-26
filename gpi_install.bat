@@ -4,7 +4,7 @@ cd gpi_backend_api
 call npm i
 cd ..
 
-cd src/frontend
+cd gpi_frontend_site
 call npm i
-cd ../..
+cd ..
 

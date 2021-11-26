@@ -4,6 +4,6 @@ cd gpi_backend_api
 npm i
 cd ..
 
-cd src/frontend
+cd gpi_frontend_site
 npm i
-cd ../..
+cd ..
