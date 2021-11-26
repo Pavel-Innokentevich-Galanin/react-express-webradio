@@ -1,6 +1,8 @@
+const express = require('express');
+const router = express.Router();
 const Lautfm = require('lautfm');
 
-module.exports = function (req, res) {
+router.get("/get-json-stream", function (req, res) {
     const laut = new Lautfm();
     laut.searchStations({ query: 'ska' })
         .then(response => {
@@ -15,4 +17,6 @@ module.exports = function (req, res) {
             console.error(err);
             res.send(500);
         })
-};
+})
+
+module.exports = router;
