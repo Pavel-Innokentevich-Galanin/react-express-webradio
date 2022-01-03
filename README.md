@@ -64,6 +64,10 @@
     </thead>
     <tbody>
         <tr>
+            <td>gpi_ds</td>
+            <td>https://pavel-innokentevich-galanin.github.io/react-express-webradio/gpi_ds/</td>
+        </tr>
+        <tr>
             <td>gpi_fr</td>
             <td>https://pavel-innokentevich-galanin.github.io/react-express-webradio/gpi_fr/</td>
         </tr>

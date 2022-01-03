@@ -21,5 +21,6 @@ gpi_wfr:
 	cd gpi_fr & npm run start
 
 gpi_wgp:
+	cd gpi_ds & npm run build
 	cd gpi_fr & npm run build
 	cd gpi_gp & npm run start
