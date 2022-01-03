@@ -35,7 +35,7 @@
         </tr>
         <tr>
             <td><a href="gpi_fr">gpi_fr</a></td>
-            <td>make gpi_wfa</td>
+            <td>make gpi_wfr</td>
             <td>http://localhost:3002</td>
             <td>fr - frontend radio: React JS (сайт радио)</td>
         </tr>
