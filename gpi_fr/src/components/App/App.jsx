@@ -28,8 +28,7 @@ export default function App() {
                     crossorigin="anonymous"
                     ref={gpi_audio_ref}
                     preload="true"
-                    // src={`${process.env.REACT_APP__API_URL}:${process.env.REACT_APP__API_PORT}/gpi-get`}
-                    src={`https://skafari.stream.laut.fm/skafari`}
+                    src={process.env.REACT_APP__API_URL}
                 >
                 </audio>
                 <AudioSpectrum
