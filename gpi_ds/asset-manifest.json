@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-express-webradio/gpi_ds/static/css/main.debb56fa.css",
+    "main.js": "/react-express-webradio/gpi_ds/static/js/main.e4dcc5d4.js",
+    "index.html": "/react-express-webradio/gpi_ds/index.html",
+    "main.debb56fa.css.map": "/react-express-webradio/gpi_ds/static/css/main.debb56fa.css.map",
+    "main.e4dcc5d4.js.map": "/react-express-webradio/gpi_ds/static/js/main.e4dcc5d4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.debb56fa.css",
+    "static/js/main.e4dcc5d4.js"
+  ]
+}

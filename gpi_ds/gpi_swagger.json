@@ -1,0 +1,141 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Документация Node JS Express сервера",
+        "version": "2022.1.3",
+        "title": "Документация API",
+        "contact": {
+            "email": "Pavel.Innokentevich.Galanin@gmail.com"
+        }
+    },
+    "host": "localhost:3000/",
+    "tags": [
+        {
+            "name": "gpi_radio",
+            "description": "Данные о радио"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/gpi_get_radio_filtred": {
+            "get": {
+                "tags": [
+                    "gpi_radio"
+                ],
+                "summary": "Получаем массив радиостанций",
+                "description": "Получаем массив радиостанций",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Получили объект с массивом радиостанций",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ApiResponse__gpi_get_radio_filtred"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/gpi_get_radio": {
+            "get": {
+                "tags": [
+                    "gpi_radio"
+                ],
+                "summary": "Получаем массив радиостанций",
+                "description": "Получаем массив радиостанций",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Получили объект с массивом радиостанций",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ApiResponse__gpi_get_radio"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ApiResponse__gpi_get_radio_filtred": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "station": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "stream_url": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "color": {
+                                "type": "string"
+                            },
+                            "images": {
+                                "type": "object",
+                                "properties": {
+                                    "station": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "ApiResponse__gpi_get_radio": {
+            "type": "object",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "stream_url": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "color": {
+                                            "type": "string"
+                                        },
+                                        "images": {
+                                            "type": "object",
+                                            "properties": {
+                                                "station": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
