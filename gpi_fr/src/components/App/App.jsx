@@ -21,8 +21,8 @@ export default function App() {
     }
 
     return (
-        <div className={styles.player}>
-            <div className={styles.player__audio}>
+        <div className={styles.gpi_player__wrapper}>
+            <div className={styles.gpi_player__canvas}>
                 <audio
                     id="gpi-audio"
                     crossorigin="anonymous"
@@ -40,14 +40,14 @@ export default function App() {
                     meterWidth={2}
                     meterCount={512}
                     meterColor={[
-                        { stop: 0, color: 'pink' },
+                        { stop: 0, color: 'red' },
                         { stop: 1, color: 'red' }
                     ]}
                     gap={1}
                 />
             </div>
-            <div className={styles.player__b_button}>
-                <button className={styles.player__button} onClick={gpi_play_pause}>
+            <div className={styles.gpi_player__functions}>
+                <button onClick={gpi_play_pause}>
                     {
                         gpi_radioIsPlay ?
                         (<FontAwesomeIcon icon={faPlay} />) :
