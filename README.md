@@ -4,7 +4,7 @@
     <caption><b>Таблица - Описание модулей</b></caption>
     <thead>
         <tr>
-            <td>Путь</td>
+            <td>Модуль</td>
             <td>Команда Makefile</td>
             <td>URL</td>
             <td>Описание</td>
@@ -32,6 +32,12 @@
             <td>make gpi_wfa</td>
             <td>http://localhost:3002</td>
             <td>fr - frontend radio: React JS (сайт радио)</td>
+        </tr>
+        <tr>
+            <td><a href="gpi_gp">gpi_gp</a></td>
+            <td>make gpi_wgp</td>
+            <td>http://localhost:8080</td>
+            <td>gp - GitHub pages: npm (для загрузки demo на gh-pages)</td>
         </tr>
     </tbody>
 </table>
