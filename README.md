@@ -1,5 +1,3 @@
-![](docs/demo.png)
-
 ## Installing packages
 
 - Windows:
