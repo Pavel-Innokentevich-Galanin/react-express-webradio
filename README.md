@@ -28,6 +28,12 @@
             <td>ba - backend API: Node JS Express server (сервер возвращает JSON данные)</td>
         </tr>
         <tr>
+            <td><a href="gpi_ds">gpi_ds</a></td>
+            <td>make gpi_wds</td>
+            <td>http://localhost:3001</td>
+            <td>ds - documentation Swagger: React JS (удобный сайт, который документально показывает GET запросы)</td>
+        </tr>
+        <tr>
             <td><a href="gpi_fr">gpi_fr</a></td>
             <td>make gpi_wfa</td>
             <td>http://localhost:3002</td>

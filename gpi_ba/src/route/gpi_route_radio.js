@@ -6,7 +6,7 @@ const gpi_Lautfm = require('lautfm');
 const gpi_router = gpi_express.Router();
 
 // gpi_ Роутер gpi_get_radio
-gpi_router.get("/gpi_get_radio", async function (gpi_request, gpi_resonse) {
+gpi_router.get("/gpi_get_radio_filtred", async function (gpi_request, gpi_resonse) {
     try {
         const gpi_laut = new gpi_Lautfm();
         const gpi_res = await gpi_laut.searchStations({ query: 'ska' });
@@ -22,10 +22,21 @@ gpi_router.get("/gpi_get_radio", async function (gpi_request, gpi_resonse) {
         }
 
         // gpi_ Теперь у нас есть один массив с разными станциями в gpi_result
+        gpi_resonse.send(gpi_result);
+    }
+    catch(gpi_error) {
         gpi_resonse.send({
-            "old": gpi_res,
-            "new": gpi_result,
+            "gpi_code": "500",
+            "gpi_msg": "" + gpi_error,
         });
+    }
+})
+
+gpi_router.get("/gpi_get_radio", async function (gpi_request, gpi_resonse) {
+    try {
+        const gpi_laut = new gpi_Lautfm();
+        const gpi_res = await gpi_laut.searchStations({ query: 'ska' });
+        gpi_resonse.send(gpi_res);
     }
     catch(gpi_error) {
         gpi_resonse.send({
