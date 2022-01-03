@@ -41,3 +41,25 @@
         </tr>
     </tbody>
 </table>
+
+## Глянуть работу онлайн
+
+<!-- > На GitHub pages нельзя поднять Node JS сервер. -->
+<!-- >  -->
+<!-- > Поэтому, для корректной работы демонстрации на gh-pages нужно запустить у себя модуль `gpi_ba`. -->
+
+<table>
+    <caption><b>Таблица - Демонстрация на GitHub pages</b></caption>
+    <thead>
+        <tr>
+            <td>Модуль</td>
+            <td>Ссылка</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>gpi_fr</td>
+            <td>https://pavel-innokentevich-galanin.github.io/react-express-webradio/gpi_fr/</td>
+        </tr>
+    </tbody>
+</table>
